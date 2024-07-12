@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Média - Usando <input></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+
+    .aprovado {
+      color: blue;
+    }
+
+    .reprovado {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora - Usando input</h2>
+    <label for="nota1">Nota 1:</label>
+    <input type="number" id="nota1" name="nota1" required>
+    <br><br>
+    <label for="nota2">Nota 2:</label>
+    <input type="number" id="nota2" name="nota2" required>
+    <br><br>
+    <button onclick="calcularMediaInput()">Calcular Média</button>
+    <br><br>
+    <p>Média: <span id="mediaInput"></span></p>
+    <p>Situação: <span id="situacaoInput"></span></p>
+  </div>
+  
+  <script>
+    function calcularMediaInput() {
+    
+      var nota1 = parseFloat(document.getElementById('nota1').value);
+      var nota2 = parseFloat(document.getElementById('nota2').value);
+
+     
+      if (isNaN(nota1) || isNaN(nota2)) {
+        alert("Por favor, digite valores numéricos válidos.");
+        return;
+      }
+
+      
+      var media = (nota1 + nota2) / 2;
+
+      var mediaSpan = document.getElementById('mediaInput');
+      mediaSpan.innerHTML = media.toFixed(1); 
+
+    
+      var situacaoSpan = document.getElementById('situacaoInput');
+      if (media >= 6) {
+        situacaoSpan.innerHTML = 'APROVADO';
+        situacaoSpan.className = 'aprovado'; 
+      } else {
+        situacaoSpan.innerHTML = 'REPROVADO';
+        situacaoSpan.className = 'reprovado'; 
+      }
+    }
+  </script>
+</body>
+</html>
